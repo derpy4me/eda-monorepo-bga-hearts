@@ -1,0 +1,38 @@
+[project]
+name = "bga-cheat-engine"
+version = "0.1.0"
+description = "Add your description here"
+authors = [
+    { name = "Tom Scott", email = "tscott@stratanetworks.com" }
+]
+dependencies = [
+    "faust-streaming[rocksdict,fast]>=0.11.3",
+    "surrealdb>=1.0.4",
+    "python-dotenv>=1.1.0",
+    "orjson>=3.10.18",
+]
+readme = "README.md"
+requires-python = ">= 3.10"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.rye]
+managed = true
+dev-dependencies = [
+    "polylith-cli>=1.26.0",
+]
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build]
+dev-mode-dirs = ["components", "bases", "development", "."]
+
+[tool.polylith.bricks]
+"bases/bce/bga_ingest_worker" = "bce/bga_ingest_worker"
+"bases/bce/bga_filter_worker" = "bce/bga_filter_worker"
+"components/bce/surrealdb_auth_lib" = "bce/surrealdb_auth_lib"
+"components/bce/surrealdb_ingest_lib" = "bce/surrealdb_ingest_lib"
+"components/bce/kafka_ingest_lib" = "bce/kafka_ingest_lib"
