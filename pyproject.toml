@@ -10,6 +10,8 @@ dependencies = [
     "surrealdb>=1.0.4",
     "python-dotenv>=1.1.0",
     "orjson>=3.10.18",
+    "uuid-utils>=0.11.0",
+    "pendulum>=3.1.0",
 ]
 readme = "README.md"
 requires-python = ">= 3.10"
@@ -31,8 +33,11 @@ allow-direct-references = true
 dev-mode-dirs = ["components", "bases", "development", "."]
 
 [tool.polylith.bricks]
-"bases/bce/bga_ingest_worker" = "bce/bga_ingest_worker"
 "bases/bce/bga_filter_worker" = "bce/bga_filter_worker"
+"bases/bce/bga_raw_ingest_worker" = "bce/bga_raw_ingest_worker"
+"bases/bce/surreal_cleanup_worker" = "bce/surreal_cleanup_worker"
+
 "components/bce/surrealdb_auth_lib" = "bce/surrealdb_auth_lib"
-"components/bce/surrealdb_ingest_lib" = "bce/surrealdb_ingest_lib"
 "components/bce/kafka_ingest_lib" = "bce/kafka_ingest_lib"
+"components/bce/kafka_raw_logs_filter" = "bce/kafka_raw_logs_filter"
+"components/bce/surrealdb_manager_lib" = "bce/surrealdb_manager_lib"

@@ -1,0 +1,17 @@
+apiVersion: skaffold/v4beta11
+kind: Config
+
+profiles:
+  - name: build-image
+    build:
+      tagPolicy:
+        dateTime:
+          timezone: "UTC"
+      artifacts:
+        - image: reg.strataops.com/bce/bga_filter_worker
+          context: ./
+          docker:
+            dockerfile: Dockerfile
+          hooks:
+            before:
+              - command: [ "../scripts/rye_build.sh" ]

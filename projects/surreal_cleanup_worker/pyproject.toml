@@ -3,7 +3,7 @@ requires = ["hatchling", "hatch-polylith-bricks"]
 build-backend = "hatchling.build"
 
 [project]
-name = "bga_filter_worker"
+name = "surreal_cleanup_worker"
 version = "0.1.0"
 
 authors = [
@@ -14,11 +14,13 @@ requires-python = ">= 3.10"
 
 dependencies = [
     "faust-streaming[fast]>=0.11.3",
+    "surrealdb>=1.0.4",
+    "pendulum>=3.1.0",
+    "uuid-utils>=0.11.0",
 ]
 
 [tool.hatch.build.hooks.polylith-bricks]
 
 [tool.polylith.bricks]
-"../../bases/bce/bga_filter_worker" = "bce/bga_filter_worker"
-
-"../../components/bce/kafka_raw_logs_filter" = "bce/kafka_raw_logs_filter"
+"../../bases/bce/surreal_cleanup_worker" = "bce/surreal_cleanup_worker"
+"../../components/bce/surrealdb_manager_lib" = "bce/surrealdb_manager_lib"

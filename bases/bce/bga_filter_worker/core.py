@@ -31,7 +31,10 @@ async def process_raw_log(messages):
     4. Logs information about processed and discarded messages
 
     Args:
-        messages: Stream of messages from the raw logs Kafka topic
+        messages (faust.StreamT): Stream of messages from the raw logs Kafka topic.
+
+    Returns:
+        None: This function doesn't return any value, it processes the stream continuously.
     """
     async for message in messages:
         # The actual BGA log we want to process is nested inside the 'original_message' key.
@@ -68,3 +71,15 @@ async def process_raw_log(messages):
                     message_type = "join"
 
                 print(f"--- Discarded Message (non-event type: {message_type}) ---")
+
+
+if __name__ == "__main__":
+    import asyncio
+    import logging
+
+    loop = asyncio.get_event_loop()
+    meili_worker = faust.Worker(app, loop=loop, loglevel=logging.INFO)
+    try:
+        loop.run_until_complete(meili_worker.start())
+    finally:
+        meili_worker.stop_and_shutdown()
