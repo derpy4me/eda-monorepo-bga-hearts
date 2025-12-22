@@ -1,0 +1,56 @@
+[project]
+name = "bga-cheat-engine"
+version = "0.1.0"
+description = "Add your description here"
+authors = [
+    { name = "Tom Scott", email = "tscott@stratanetworks.com" }
+]
+dependencies = [
+    "faust-streaming[rocksdict,fast]>=0.11.3",
+    "surrealdb>=1.0.4",
+    "python-dotenv>=1.1.0",
+    "orjson>=3.10.18",
+    "uuid-utils>=0.11.0",
+    "pendulum>=3.1.0",
+    "pydantic-settings>=2.10.1",
+    "cachetools-async>=0.0.5",
+    "opentelemetry-distro>=0.55b1",
+    "opentelemetry-sdk>=1.34.1",
+    "opentelemetry-instrumentation-logging>=0.55b1",
+    "opentelemetry-instrumentation-aiokafka>=0.55b1",
+]
+readme = "README.md"
+requires-python = ">= 3.10"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.rye]
+managed = true
+dev-dependencies = [
+    "polylith-cli>=1.26.0",
+]
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build]
+dev-mode-dirs = ["components", "bases", "development", "."]
+
+[tool.polylith.bricks]
+"bases/bce/bga_filter_worker" = "bce/bga_filter_worker"
+"bases/bce/bga_raw_ingest_worker" = "bce/bga_raw_ingest_worker"
+"bases/bce/surreal_cleanup_worker" = "bce/surreal_cleanup_worker"
+
+"components/bce/surrealdb_auth_lib" = "bce/surrealdb_auth_lib"
+"components/bce/kafka_ingest_lib" = "bce/kafka_ingest_lib"
+"components/bce/kafka_raw_logs_filter" = "bce/kafka_raw_logs_filter"
+"components/bce/surrealdb_manager_lib" = "bce/surrealdb_manager_lib"
+"bases/bce/bga_live_state_worker" = "bce/bga_live_state_worker"
+"components/bce/surreal_env_settings" = "bce/surreal_env_settings"
+"components/bce/surreal_connection_manager_lib" = "bce/surreal_connection_manager_lib"
+"components/bce/kafka_env_settings" = "bce/kafka_env_settings"
+"bases/bce/surreal_kafka_rewind_cli" = "bce/surreal_kafka_rewind_cli"
+"components/bce/bga_filtered_event" = "bce/bga_filtered_event"
+"components/bce/surreal_live_state_lib" = "bce/surreal_live_state_lib"

@@ -3,5 +3,5 @@
   <component name="Black">
     <option name="sdkName" value="Bga Cheat Engine" />
   </component>
-  <component name="ProjectRootManager" version="2" project-jdk-name="Bga Cheat Engine" project-jdk-type="Python SDK" />
+  <component name="ProjectRootManager" version="2" project-jdk-name="BGA Engine" project-jdk-type="Python SDK" />
 </project>

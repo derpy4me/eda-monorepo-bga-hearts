@@ -10,7 +10,7 @@
       <excludeFolder url="file://$MODULE_DIR$/projects/bga_raw_ingest_worker/.venv" />
       <excludeFolder url="file://$MODULE_DIR$/projects/bga_raw_ingest_worker/dist" />
     </content>
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="BGA Engine" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="PyDocumentationSettings">
