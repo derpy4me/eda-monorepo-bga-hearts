@@ -3,5 +3,8 @@
   <component name="Black">
     <option name="sdkName" value="Bga Cheat Engine" />
   </component>
-  <component name="ProjectRootManager" version="2" project-jdk-name="BGA Engine" project-jdk-type="Python SDK" />
+  <component name="ProjectRootManager" version="2" project-jdk-name="uv (reqs-dev)" project-jdk-type="Python SDK" />
+  <component name="PythonCompatibilityInspectionAdvertiser">
+    <option name="version" value="3" />
+  </component>
 </project>

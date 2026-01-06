@@ -1,0 +1,21 @@
+[project]
+name = "reqs"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+    "faststream[kafka,redis,rabbit,cli]>=0.6.5",
+    "httpx>=0.28.1",
+    "pendulum>=3.1.0",
+    "pydantic>=2.12.5",
+    "pydantic-settings>=2.12.0",
+    "uvloop>=0.22.1",
+]
+
+[dependency-groups]
+dev = [
+    "loguru>=0.7.3",
+]
+test = [
+    "pytest>=9.0.2",
+]
+

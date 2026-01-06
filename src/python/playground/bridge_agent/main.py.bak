@@ -1,0 +1,45 @@
+from faststream import FastStream
+from faststream.rabbit import RabbitBroker
+from faststream.redis import RedisBroker
+from pydantic import BaseModel
+
+from loguru import logger
+
+
+class RawEvent(BaseModel):
+    sensor_id: str
+    value: float
+    timestamp: str
+
+
+class ProcessedEvent(BaseModel):
+    sensor_id: str
+    normalized_value: float
+    status: str
+
+
+rabbit_broker: RabbitBroker = RabbitBroker()
+redis_broker: RedisBroker = RedisBroker()
+
+app = FastStream(rabbit_broker)
+
+
+@app.on_startup
+async def on_start():
+    await redis_broker.start()
+
+
+@rabbit_broker.subscriber("in-topic")
+@redis_broker.publisher(stream="out-topic")
+@redis_broker.publisher("out-topic")
+async def handle_message(msg: RawEvent) -> ProcessedEvent:
+    logger.info("Made it to here...")
+    logger.info(msg)
+    normalized_value = msg.value / 100.0
+    status = "nominal" if normalized_value < 0.8 else "critical"
+
+    return ProcessedEvent(
+        sensor_id=msg.sensor_id,
+        normalized_value=normalized_value,
+        status=status
+    )

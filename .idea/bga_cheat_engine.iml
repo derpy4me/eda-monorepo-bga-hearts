@@ -5,12 +5,26 @@
       <sourceFolder url="file://$MODULE_DIR$/bases" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/components" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/development" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/python" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/rust" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/rust/playground/hello_echo/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/.venv" />
       <excludeFolder url="file://$MODULE_DIR$/projects/bga_filter_worker/dist" />
       <excludeFolder url="file://$MODULE_DIR$/projects/bga_raw_ingest_worker/.venv" />
       <excludeFolder url="file://$MODULE_DIR$/projects/bga_raw_ingest_worker/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/.idea/queries" />
+      <excludeFolder url="file://$MODULE_DIR$/.pants.d" />
+      <excludeFolder url="file://$MODULE_DIR$/old_code/projects/bga_filter_worker/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/old_code/projects/bga_raw_ingest_worker/.venv" />
+      <excludeFolder url="file://$MODULE_DIR$/old_code/projects/bga_raw_ingest_worker/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/old_code/projects/surreal_cleanup_worker/.venv" />
+      <excludeFolder url="file://$MODULE_DIR$/old_code/projects/surreal_cleanup_worker/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/dist/export/python/virtualenvs/python-default/3.12.10" />
+      <excludeFolder url="file://$MODULE_DIR$/src/rust/playground/hello_echo/target" />
+      <excludeFolder url="file://$MODULE_DIR$/dist/export/python/virtualenvs/reqs-dev/3.12.10" />
+      <excludeFolder url="file://$MODULE_DIR$/dist" />
     </content>
-    <orderEntry type="jdk" jdkName="BGA Engine" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="uv (reqs-dev)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="PyDocumentationSettings">

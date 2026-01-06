@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="db-tree-configuration">
+    <option name="data" value="1:0:prod_resources&#10;4:0:sandbox_resources&#10;7:0:local_resources&#10;9:0:dev_resources&#10;12:0:Reporting Resources&#10;----------------------------------------&#10;2:1:00aef823-80e6-4f91-b4a7-9f1d92d61ef4&#10;3:1:d9dc13c6-ab3c-4082-a4ae-45598379f8d0&#10;5:4:06d0bbf4-08b4-40d3-ad5f-bb660e61b196&#10;6:4:b2189bd2-048b-45cb-892c-77c7590cecba&#10;8:7:798638fc-11cf-42fd-ab2f-7b16cbe00657&#10;10:9:0885fd7b-bccc-4c9c-8076-f2d754795ac4&#10;11:9:c830f8ac-1429-417c-b03e-4db7fce06864&#10;13:12:e14681d2-f9c8-4dbf-802f-db7e4617b0ac&#10;14:12:5786ccf8-b910-4144-9ac6-adc231cdf07f&#10;15:0:f5d53aaf-f4d7-4060-844d-d1843d2c0680&#10;16:0:88cee338-0888-4f0f-bf57-59574a699e11&#10;17:0:1c74d34d-d3b6-464b-bcce-e855d3885fd2&#10;" />
+  </component>
+</project>

@@ -1,0 +1,50 @@
+[GLOBAL]
+pants_version = "2.30.0"
+backend_packages.add = [
+    "pants.backend.build_files.fmt.ruff",
+    "pants.backend.docker",
+    "pants.backend.experimental.python.lint.ruff.check",
+    "pants.backend.experimental.python.lint.ruff.format",
+    "pants.backend.experimental.rust",
+    "pants.backend.experimental.visibility",
+    "pants.backend.python",
+    "pants.backend.shell",
+    "pants.backend.shell.lint.shellcheck",
+    "pants.backend.shell.lint.shfmt",
+]
+pants_ignore.add = ["old_code"]
+
+[tailor]
+ignore_paths = ["old_code"]
+
+[source]
+root_patterns = ["src/python", "src/rust"]
+
+[generate-lockfiles]
+diff = true
+
+[python]
+# The default interpreter constraints for code in this repo. Individual targets can override
+#  this with the `interpreter_constraints` field. See
+#  https://www.pantsbuild.org/docs/python-interpreter-compatibility.
+interpreter_constraints = ["==3.12.*"]
+enable_resolves = true
+default_resolve = "reqs"
+
+[python.resolves]
+reqs = "3rd-party/python/reqs.lock"
+reqs-dev = "3rd-party/python/reqs-dev.lock"
+reqs-test = "3rd-party/python/reqs-test.lock"
+
+[python-bootstrap]
+# We search for interpreters both on the $PATH and in the `$(pyenv root)/versions` folder.
+#  If you're using macOS, you may want to leave off the <PATH> entry to avoid using the
+#  problematic system Pythons. See
+#  https://www.pantsbuild.org/docs/python-interpreter-compatibility#changing-the-interpreter-search-path.
+search_path = ["<PATH>", "<PYENV>"]
+
+[rust]
+toolchain = "stable"
+
+[dockerfile-parser]
+use_rust_parser = true

@@ -1,0 +1,50 @@
+import msgpack
+from mitmproxy import http
+import structlog
+from kafka import KafkaProducer
+
+producer = KafkaProducer(
+    bootstrap_servers="kafka-test.strata.win:9092,kafka-test.strata.win:9093,kafka-test.strata.win:9094",
+    value_serializer=lambda v: msgpack.packb(v),
+)
+
+logger = structlog.get_logger(__name__)
+
+
+def response(flow: http.HTTPFlow):
+    assert flow.response is not None
+    if "boardgamearena.com" not in flow.request.host:
+        return
+
+    response = flow.response
+    if response.status_code > 400:
+        return
+
+    try:
+        content = response.json()
+    except Exception as e:
+        logger.debug("Failed to parse content", exception=str(e))
+        return
+
+    # if 'results' in content:
+    #     if 'designer' in content['results']:
+    #         return
+    #     if 'tutorial' in content['results']:
+    #         return
+    # if 'data' in content:
+    #     if 'ranks' in content['data']:
+    #         return
+    #     if 'rankingInfo' in content['data']:
+    #         return
+    #     if 'tables' in content['data']:
+    #         return
+
+    logger.debug(
+        "Sending RESPONSE payload...",
+        status_code=flow.response.status_code,
+        reason=flow.response.reason,
+        content=content,
+    )
+
+    payload = {"status_code": flow.response.status_code, "content": content}
+    producer.send("bga-log-responses", payload)

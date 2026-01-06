@@ -1,0 +1,23 @@
+from mitmproxy import http
+import structlog
+
+
+logger = structlog.get_logger(__name__)
+
+
+def request(flow: http.HTTPFlow):
+    if "boardgamearena.com" not in flow.request.host:
+        return
+
+    if flow.request.path == "/gamelist/gamelist/gameDetails.html":
+        return
+
+    logger.debug(
+        "Request Received",
+        content=flow.request.content,
+        host=flow.request.host,
+        port=flow.request.port,
+        method=flow.request.method,
+        scheme=flow.request.scheme,
+        path=flow.request.path,
+    )
